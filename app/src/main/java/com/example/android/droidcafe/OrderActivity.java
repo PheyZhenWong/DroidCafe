@@ -22,6 +22,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -34,8 +36,9 @@ import java.io.Serializable;
  * with the intent to launch this activity.
  */
 public class OrderActivity extends AppCompatActivity implements
-        AdapterView.OnItemSelectedListener {
-
+        AdapterView.OnItemSelectedListener{
+    private CheckBox check1, check2, check3, check4, check5;
+    private Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +49,8 @@ public class OrderActivity extends AppCompatActivity implements
         String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
         TextView textView = findViewById(R.id.order_textview);
         textView.setText(message);
+        addListenerOnButtonClick();
+
 
         Spinner spinner = findViewById(R.id.label_spinner);
         if (spinner != null) {
@@ -101,5 +106,38 @@ public class OrderActivity extends AppCompatActivity implements
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
-
+    public void addListenerOnButtonClick() {
+        check1 = (CheckBox) findViewById(R.id.chkChocolate);
+        check2 = (CheckBox) findViewById(R.id.chkSprinkle);
+        check3 = (CheckBox) findViewById(R.id.chkCrushed);
+        check4 = (CheckBox) findViewById(R.id.chkCherries);
+        check5 = (CheckBox) findViewById(R.id.chkOrio);
+        button = (Button) findViewById(R.id.btnShow);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                StringBuffer result = new StringBuffer();
+                result.append("Toppings: ");
+                if (check1.isChecked()) {
+                    result.append(getString(R.string.chk_chocalate_syrup) + " ");
+                }
+                if (check2.isChecked()) {
+                    result.append(getString(R.string.chk_sprinkles) + " ");
+                }
+                if (check3.isChecked()) {
+                    result.append(getString(R.string.chk_crushed_nuts) + " ");
+                }
+                if (check4.isChecked()) {
+                    result.append(getString(R.string.chk_cherries) + " ");
+                }
+                if (check5.isChecked()) {
+                    result.append(getString(R.string.chk_orio_cookies_crumbles));
+                }
+                Toast.makeText(getApplicationContext(), result.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
 }
+
+
+

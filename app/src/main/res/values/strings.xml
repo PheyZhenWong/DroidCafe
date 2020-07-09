@@ -37,6 +37,13 @@
     <string name="next_day_ground_delivery">Next day ground delivery</string>
     <string name="pick_up">Pick up</string>
     <string name="enter_phone">Enter phone</string>
+    <string name="chk_chocalate_syrup">Chocalate syrup</string>
+    <string name="chk_sprinkles">Sprinkles</string>
+    <string name="chk_crushed_nuts">Crushed nuts</string>
+    <string name="chk_cherries">Cherries</string>
+    <string name="chk_orio_cookies_crumbles">Orio Cookies Crumbles</string>
+    <string name="btn_show_toast">Show Toast</string>
+    <string name="enter_your_address">Enter your address</string>
 
     <string-array name="labels_array">
         <item>Home</item>
